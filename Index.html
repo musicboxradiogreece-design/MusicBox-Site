@@ -4,7 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MusicBox RadioGreece | Deep House & Electro</title>
-    <style>
+    <div class="radio-player-widget" style="background: #141423; padding: 20px; border-radius: 15px; border: 1px solid #ff007f; max-width: 400px; margin: 20px auto; color: white;">
+    <h3 style="margin-bottom: 15px; text-align: center;">MusicBox Player Control</h3>
+    
+    <!-- https://stream.zeno.fm/tpepgx5hiozuv -->
+    <input type="text" id="streamUrl" placeholder="Επικόλληση Stream URL (π.χ. .mp3 ή .m3u)" 
+           style="width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 5px; border: none;">
+    
+    <audio id="audioPlayer"></audio>
+
+    <div style="display: flex; gap: 10px; justify-content: center;">
+        <button onclick="playAudio()" style="padding: 10px 20px; background: #00ffcc; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">▶ Play</button>
+        <button onclick="pauseAudio()" style="padding: 10px 20px; background: #ffcc00; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">|| Pause</button>
+        <button onclick="stopAudio()" style="padding: 10px 20px; background: #ff4444; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; color: white;">■ Stop</button>
+    </div>
+</div>
+
+<script>
+    const audio = document.getElementById("audioPlayer");
+    const urlInput = document.getElementById("streamUrl");
+
+    function playAudio() {
+        const streamUrl = urlInput.value;
+        if (streamUrl) {
+            audio.src = streamUrl;
+            audio.play();
+        } else {
+            alert("Παρακαλώ εισάγετε ένα έγκυρο Stream URL!");
+        }
+    }
+
+    function pauseAudio() {
+        audio.pause();
+    }
+
+    function stopAudio() {
+        audio.pause();
+        audio.currentTime = 0; // Επαναφορά στην αρχή για να σταματήσει πλήρως
+        audio.src = ""; // Διαγραφή πηγής
+    }
+</script>
+    
         /* Base Reset & Colors */
         * {
             margin: 0;
