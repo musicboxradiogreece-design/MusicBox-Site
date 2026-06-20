@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicBox RadioGreece | Deep House & Electro</title>
+    <style>
+        /* Base Reset & Colors */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0b0b12;
+            color: #e5e5e7;
+            line-height: 1.6;
+        }
+
+        a {
+            color: #00ffcc;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            color: #ff007f;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, #141423 0%, #08080f 100%);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #22223b;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+
+        .logo span {
+            color: #00ffcc;
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        /* Hero / Player Section */
+        .hero {
+            background: radial-gradient(circle at center, #1a1a2e 0%, #0b0b12 100%);
+            padding: 60px 5%;
+            text-align: center;
+            border-bottom: 1px solid #1f1f38;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .hero p {
+            color: #8a8a9e;
+            margin-bottom: 30px;
+        }
+
+        .player-container {
+            background: #141423;
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid #ff007f;
+        }
+
+        .now-playing {
+            font-size: 0.9rem;
+            color: #ff007f;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        audio {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        /* Main Content Layout */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* News Section */
+        .news-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            border-left: 4px solid #00ffcc;
+            padding-left: 10px;
+        }
+
+        .news-card {
+            background: #141423;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            transition: transform 0.3s;
+            border: 1px solid #1f1f38;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            border-color: #00ffcc;
+        }
+
+        .news-meta {
+            font-size: 0.8rem;
+            color: #8a8a9e;
+            margin-bottom: 10px;
+        }
+
+        .news-card h3 {
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        /* Sidebar / Contact */
+        .sidebar h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            border-left: 4px solid #ff007f;
+            padding-left: 10px;
+        }
+
+        .widget {
+            background: #141423;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border: 1px solid #1f1f38;
+        }
+
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .phone-btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #ff007f, #7928ca);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .phone-btn:hover {
+            color: white;
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #08080f;
+            text-align: center;
+            padding: 30px;
+            margin-top: 60px;
+            border-top: 1px solid #1f1f38;
+            color: #666680;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>MusicBox <span>RadioGreece</span></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Αρχική</a></li>
+                <li><a href="#news">Ειδήσεις</a></li>
+                <li><a href="#contact">Επικοινωνία</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero / Live Player Section -->
+    <section class="hero" id="home">
+        <h2>Deep House & Electro Σταθμός</h2>
+        <p>Οι καλύτεροι DJs και οι πιο φρέσκες κυκλοφορίες παίζουν εδώ 24/7.</p>
+        
+        <div class="player-container">
+            <div class="now-playing">● On Air | Live Stream</div>
+            <h3>MusicBox Player</h3>
+            <!-- Αντικατάστησε το 'YOUR_STREAM_URL' με το κανονικό URL του streaming server σου -->
+            <audio controls src="YOUR_STREAM_URL">
+                Ο browser σου δεν υποστηρίζει το audio element.
+            </audio>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        
+        <!-- Left Column: Artist News -->
+        <main class="news-section" id="news">
+            <h2>Καλλιτεχνικά Νέα & Releases</h2>
+            
+            <article class="news-card">
+                <div class="news-meta">18 Ιουνίου, 2026 • Deep House</div>
+                <h3>Ο Solomun επιστρέφει με νέο ατμοσφαιρικό Single</h3>
+                <p>Ο βασιλιάς της deep house σκηνής μόλις κυκλοφόρησε το ολοκαίνουριο single του που αναμένεται να κυριαρχήσει στα clubs αυτό το καλοκαίρι. Ακούστε το πρώτοι στο MusicBox RadioGreece.</p>
+            </article>
+
+            <article class="news-card">
+                <div class="news-meta">15 Ιουνίου, 2026 • Electro House</div>
+                <h3>Τα 5 Electro Tracks που πρέπει να έχεις στη λίστα σου αυτόν τον μήνα</h3>
+                <p>Από uplifting electro beats μέχρι σκοτεινά synth baselines, μαζέψαμε τις κορυφαίες κυκλοφορίες των underground καλλιτεχνών που ξεχωρίσαμε αυτή την εβδομάδα.</p>
+            </article>
+
+            <article class="news-card">
+                <div class="news-meta">10 Ιουνίου, 2026 • Interviews</div>
+                <h3>Αποκλειστική Συνέντευξη: Η άνοδος της Melodic Techno & House</h3>
+                <p>Μιλάμε με εγχώριους παραγωγούς για το πώς η Deep και η Electro μουσική εξελίσσονται και επηρεάζουν την club κουλτούρα στην Ελλάδα.</p>
+            </article>
+        </main>
+
+        <!-- Right Column: Sidebar & Contact -->
+        <aside class="sidebar" id="contact">
+            <div class="widget">
+                <h3>Επικοινωνία</h3>
+                <div class="contact-info">
+                    <p>Βρισκόμαστε στον αέρα καθημερινά! Στείλτε μας τις απορίες σας, τα request σας ή για διαφημιστική συνεργασία.</p>
+                    <p><strong>Τηλέφωνο:</strong></p>
+                    <a href="tel:+306939366397" class="phone-btn">📞 +30 6939366397</a>
+                </div>
+            </div>
+
+            <div class="widget">
+                <h3>Current Dynamic</h3>
+                <p style="color: #8a8a9e; font-size: 0.9rem;">Συντονίσου και άφησε το μπάσο της Deep House να σε παρασύρει. MusicBox RadioGreece – Η δική σου μουσική κιβωτός.</p>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 MusicBox RadioGreece. All Rights Reserved. Designed for Electronic Music Lovers.</p>
+    </footer>
+
+</body>
+  </html>
+  
